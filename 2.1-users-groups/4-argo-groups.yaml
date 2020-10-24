@@ -12,6 +12,7 @@ metadata:
   name: argocd-admins
 users:
   - paolocarta
+  - tektonbot
   - user1
   - user4
 ---
