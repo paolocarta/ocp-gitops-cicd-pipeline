@@ -1,0 +1,32 @@
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: argocd-users
+users: 
+  - user2
+  - user3
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: argocd-admins
+users:
+  - paolocarta
+  - user1
+  - user4
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: developerteam1
+users:
+  - user1
+  - user2
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: developerteam2
+users:
+  - user3
+  - user4

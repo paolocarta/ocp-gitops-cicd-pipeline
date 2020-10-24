@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: middleware
+  namespace: argocd
+spec:
+  description: Lab Cluster
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  sourceRepos:
+  - https://github.com/paolocarta/ocp-gitops-argocd.git

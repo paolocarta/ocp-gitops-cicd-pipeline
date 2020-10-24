@@ -1,0 +1,94 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cicd
+  namespace: argocd
+spec:
+  description: CI/CD
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  sourceRepos:
+  - https://github.com/paolocarta/ocp-gitops-argocd.git
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tekton-pipeline-spring-rest-devteam1
+  namespace: argocd
+spec:
+  destination:
+    namespace: developerteam1-cicd
+    server: 'https://kubernetes.default.svc'
+  project: cicd
+  source:
+    # chart: springboot-tekton
+    helm:
+      valueFiles:
+      - values.yaml
+      parameters:
+      - name: deploy.namespace.prefix
+        value: developerteam1
+    path: 5-applications/spring-rest/cicd/tekton-pipeline
+    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
+    targetRevision: gitops-cicd-pipeline-only
+  ignoreDifferences:
+  - group: tekton.dev
+    kind: PipelineRun
+    # name: basic-spring-boot-first-pipe-run
+    # namespace: developerteam1-cicd
+    jsonPointers:
+    - /spec
+    - /metadata
+    - /status
+  - group: tekton.dev
+    kind: TaskRun
+    jsonPointers:
+    - /spec
+    - /metadata
+    - /status
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spring-boot-rest-stage
+  namespace: argocd
+spec:
+  destination:
+    namespace: developerteam1-stage
+    server: 'https://kubernetes.default.svc'
+  project: developerteam1
+  source:
+    path: 5-applications/spring-rest/manifests/overlays/stage
+    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
+    targetRevision: gitops-cicd-pipeline-only
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: spring-boot-rest-prod
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: developerteam1-prod
+#     server: 'https://kubernetes.default.svc'
+#   project: developerteam1
+#   source:
+#     path: 5-applications/spring-rest/manifests/overlays/prod
+#     repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
+#     targetRevision: gitops-cicd-pipeline-only
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true

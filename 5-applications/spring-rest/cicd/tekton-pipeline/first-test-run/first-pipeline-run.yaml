@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: basic-spring-boot-first-pipe-run
+  namespace: developerteam1-cicd
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  pipelineRef:
+    name: basic-spring-boot-pipeline
+  resources:
+  - name: basic-spring-boot-source
+    resourceRef:
+      name: basic-spring-boot-git-first-run
+  - name: gitops-repo
+    resourceRef:
+      name: gitops-manifests-pipe-resource
+  - name: basic-spring-boot-image
+    resourceRef:
+      name: basic-spring-boot-image
+  serviceAccountName: pipeline-with-keys
+  workspaces:
+  - name: local-maven-repo
+    persistentVolumeClaim:
+      claimName: maven-repo-pvc-spring-rest
+  - name: exchange-area
+    persistentVolumeClaim:
+      claimName: exchange-area-pvc-spring-rest
+  timeout: 1h0m0s
