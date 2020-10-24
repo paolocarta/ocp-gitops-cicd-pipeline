@@ -6,7 +6,6 @@ namespace: developerteam1-prod
 
 patchesStrategicMerge:
 - replica-and-rollout-strategy.yaml
-- infra.yaml
 
 images:
 - name: image-registry.openshift-image-registry.svc:5000/developerteam1-cicd/basic-spring-boot
