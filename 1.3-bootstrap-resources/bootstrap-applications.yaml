@@ -12,7 +12,7 @@ spec:
     - namespace: '*'
       server: '*'
   sourceRepos:
-  - https://github.com/paolocarta/ocp-gitops-argocd.git
+  - https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -26,8 +26,8 @@ spec:
   project: infra
   source:
     path: 2-namespaces
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
@@ -45,8 +45,8 @@ spec:
   project: infra
   source:
     path: 2.1-users-groups
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
@@ -64,8 +64,8 @@ spec:
   project: infra
   source:
     path: 3-permissions
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
@@ -83,8 +83,8 @@ spec:
   project: bootstrap
   source:
     path: 4-argocd-projects
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
@@ -102,8 +102,8 @@ spec:
   project: infra
   source:
     path: 7-operators
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true

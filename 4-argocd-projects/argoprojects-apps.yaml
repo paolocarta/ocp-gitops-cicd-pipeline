@@ -12,7 +12,7 @@ spec:
     - namespace: '*'
       server: '*'
   sourceRepos:
-  - https://github.com/paolocarta/ocp-gitops-argocd.git
+  - https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -33,8 +33,8 @@ spec:
       - name: deploy.namespace.prefix
         value: developerteam1
     path: 5-applications/spring-rest/cicd/tekton-pipeline
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   ignoreDifferences:
   - group: tekton.dev
     kind: PipelineRun
@@ -67,8 +67,8 @@ spec:
   project: developerteam1
   source:
     path: 5-applications/spring-rest/manifests/overlays/stage
-    repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-    targetRevision: gitops-cicd-pipeline-only
+    repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true

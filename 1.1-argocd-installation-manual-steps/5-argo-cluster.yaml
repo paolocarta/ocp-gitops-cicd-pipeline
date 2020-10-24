@@ -31,7 +31,7 @@ spec:
     scopes: '[groups]'
   applicationInstanceLabelKey: paolocarta.me/argoapp
   repositories: |
-    - url: https://github.com/paolocarta/ocp-gitops-argocd.git
+    - url: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
   server:
     enabled: true
     route: 
