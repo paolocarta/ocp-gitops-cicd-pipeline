@@ -49,4 +49,4 @@ spec:
     script: |
       cp -r /tekton/home/.ssh /root/
       git branch --show-current
-      git push
+      git push origin master
