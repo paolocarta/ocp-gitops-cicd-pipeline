@@ -7,5 +7,5 @@ metadata:
   name: argocd-cm
   namespace: argocd
 data:
-  accounts.tektonbot: apiKey
+  accounts.tektonbot: apiKey,login
   accounts.tektonbot.enabled: "true"
