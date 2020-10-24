@@ -12,7 +12,7 @@ spec:
     - name: flags
       default: --
     - name: argocd-version
-      default: v1.7.7
+      default: v1.5.5
   stepTemplate:
     envFrom:
       - configMapRef:
@@ -23,8 +23,8 @@ spec:
     - name: sync
       image: argoproj/argocd:$(params.argocd-version)
       script: |
-        argocd app sync $(params.application-name) --revision $(params.revision) $(params.flags) --server $ARGOCD_SERVER --auth-token $ARGOCD_AUTH_TOKEN
+        argocd app sync $(params.application-name) --revision $(params.revision) $(params.flags) --server $ARGOCD_SERVER --loglevel debug --auth-token $ARGOCD_AUTH_TOKEN
     - name: wait
       image: argoproj/argocd:$(params.argocd-version)      
       script: |
-        argocd app wait $(params.application-name) --health $(params.flags) --server $ARGOCD_SERVER --auth-token $ARGOCD_AUTH_TOKEN
+        argocd app wait $(params.application-name) --health $(params.flags) --server $ARGOCD_SERVER --loglevel debug --auth-token $ARGOCD_AUTH_TOKEN
