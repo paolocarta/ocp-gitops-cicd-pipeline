@@ -73,22 +73,3 @@ spec:
     automated:
       prune: true
       selfHeal: false
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: spring-boot-rest-prod
-#   namespace: argocd
-# spec:
-#   destination:
-#     namespace: developerteam1-prod
-#     server: 'https://kubernetes.default.svc'
-#   project: developerteam1
-#   source:
-#     path: 5-applications/spring-rest/manifests/overlays/prod
-#     repoURL: https://github.com/paolocarta/ocp-gitops-argocd.git
-#     targetRevision: gitops-cicd-pipeline-only
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
