@@ -49,4 +49,4 @@ spec:
     script: |
       cp -r /tekton/home/.ssh /root/
       git branch --show-current
-      git push origin gitops-cicd-pipeline-only
+      git push
