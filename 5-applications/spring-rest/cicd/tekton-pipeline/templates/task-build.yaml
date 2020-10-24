@@ -87,6 +87,7 @@ spec:
       - /workspace/source/Dockerfile
       - /workspace/source/upload
 
+  
   - name: new-version
     image: clamer/kikd:1.0.3
     imagePullPolicy: IfNotPresent
