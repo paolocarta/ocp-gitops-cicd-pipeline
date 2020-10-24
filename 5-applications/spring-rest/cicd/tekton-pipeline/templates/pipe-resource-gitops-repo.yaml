@@ -6,6 +6,6 @@ spec:
   type: git
   params:
   - name: url
-    value: git@github.com:paolocarta/ocp-gitops-argocd.git
+    value: git@github.com:paolocarta/ocp-gitops-cicd-pipeline.git
   - name: revision
-    value: refs/heads/gitops-cicd-pipeline-only
+    value: master
