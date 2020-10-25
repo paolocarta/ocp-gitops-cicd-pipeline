@@ -25,7 +25,6 @@ spec:
         argocd.argoproj.io/compare-options: IgnoreExtraneous
       labels:
         commit-id: $(params.git-commit-id)
-        # branch: $(params.git-branch)
     spec:
       type: git
       params:
@@ -33,7 +32,7 @@ spec:
         value: $(params.git-repo-ssh-url)
       - name: revision
         value: $(params.git-branch)
-        
+
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
