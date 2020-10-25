@@ -8,10 +8,6 @@ spec:
   workspaces:
     - name: output-area
   params:
-    - description: The image tag
-      name: tag
-      type: string
-      default: latest
     - description: the deployment
       name: deployment-folder
       type: string
