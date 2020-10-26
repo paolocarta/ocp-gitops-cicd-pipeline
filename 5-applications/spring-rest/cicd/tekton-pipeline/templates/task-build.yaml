@@ -37,16 +37,6 @@ spec:
       default: oci
       description: 'The format of the built container, oci or docker'
       type: string
-{{- if .Values.sonar.enabled }}
-    - name: volumeName
-      description: The sonar-script volume
-      type: string
-      default: sonar-volume
-    - name: CFGNAME
-      description: the sonar config map name containing the quality gate script
-      type: string
-      default: sonar
-{{- end }}
 
   resources:
     inputs:
