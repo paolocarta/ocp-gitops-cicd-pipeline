@@ -4,14 +4,13 @@ metadata:
   name: demolab-argocd
   namespace: argocd
 spec:
-  version: v1.7.7
+  version: v2.0.0
   usersAnonymousEnabled: true
   ha:
     enabled: true
   dex:
     image: quay.io/redhat-cop/dex
     version: v2.22.0-openshift
-    # version: v2.21.0
     openShiftOAuth: true
   grafana:
     enabled: true

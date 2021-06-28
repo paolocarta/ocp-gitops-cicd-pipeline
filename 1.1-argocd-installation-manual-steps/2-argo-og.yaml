@@ -3,6 +3,8 @@ kind: OperatorGroup
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    olm.providedAPIs: AppProject.v1alpha1.argoproj.io,Application.v1alpha1.argoproj.io,ApplicationSet.v1alpha1.argoproj.io,ArgoCD.v1alpha1.argoproj.io,ArgoCDExport.v1alpha1.argoproj.io
 spec:
   targetNamespaces:
     - argocd

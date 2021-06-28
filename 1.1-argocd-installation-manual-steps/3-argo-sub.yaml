@@ -6,23 +6,27 @@ metadata:
   annotations: 
     olm.operatorGroup: argocd
 spec:
-  channel: "alpha" 
-  installPlanApproval: "Automatic"
-  source: "community-operators" 
-  sourceNamespace: "openshift-marketplace"
-  name: "argocd-operator"
----
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: "prometheus"
-  namespace: "argocd"
-  annotations: 
-    olm.operatorGroup: argocd
-spec:
-  channel: "beta" 
-  installPlanApproval: "Automatic"
-  source: "community-operators" 
-  sourceNamespace: "openshift-marketplace"
-  name: "prometheus"
+  channel: alpha
+  installPlanApproval: Manual
+  name: argocd-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: argocd-operator.v0.0.15
+# ---
+# apiVersion: operators.coreos.com/v1alpha1
+# kind: Subscription
+# metadata:
+#   name: "prometheus"
+#   namespace: "argocd"
+#   annotations: 
+#     olm.operatorGroup: argocd
+# spec:
+#   channel: "beta" 
+#   installPlanApproval: "Automatic"
+#   source: "community-operators" 
+#   sourceNamespace: "openshift-marketplace"
+#   name: "prometheus"
+
+
+
 
