@@ -3,8 +3,8 @@ apiVersion: user.openshift.io/v1
 metadata:
   name: argocd-users
 users: 
+  - user1
   - user2
-  - user3
 ---
 kind: Group
 apiVersion: user.openshift.io/v1
@@ -13,8 +13,7 @@ metadata:
 users:
   - paolocarta
   - tektonbot
-  - user1
-  - user4
+  - kubeadmin
 ---
 kind: Group
 apiVersion: user.openshift.io/v1

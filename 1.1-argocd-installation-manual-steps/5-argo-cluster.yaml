@@ -4,22 +4,22 @@ metadata:
   name: demolab-argocd
   namespace: argocd
 spec:
-  version: v2.0.0
+  # version: v2.0.0
   usersAnonymousEnabled: true
   ha:
     enabled: true
-  dex:
-    image: quay.io/redhat-cop/dex
-    version: v2.22.0-openshift
-    openShiftOAuth: true
-  grafana:
-    enabled: true
-    route: 
-      enabled: true
-  prometheus:
-    enabled: true
-    route: 
-      enabled: true
+  # dex:
+  #   image: quay.io/redhat-cop/dex
+  #   version: v2.22.0-openshift
+  #   openShiftOAuth: true
+  # grafana:
+  #   enabled: true
+  #   route: 
+  #     enabled: true
+  # prometheus:
+  #   enabled: true
+  #   route: 
+  #     enabled: true
   rbac:
     defaultPolicy: 'role:readonly'
     policy: |
@@ -35,21 +35,11 @@ spec:
     enabled: true
     route: 
       enabled: true
-    autoscale:
-      enabled: true
-      hpa:
-        maxReplicas: 3
-        minReplicas: 2
-        scaleTargetRef:
-          apiVersion: extensions/v1beta1
-          kind: Deployment
-          name: demolab-argocd-server
-        targetCPUUtilizationPercentage: 50
-  resourceExclusions: |
-    - apiGroups:
-      - tekton.dev
-      kinds:
-      - PipelineRun
-      - TaskRun
-      clusters:
-      - "https://kubernetes.default.svc"
+  # resourceExclusions: |
+  #   - apiGroups:
+  #     - tekton.dev
+  #     kinds:
+  #     - PipelineRun
+  #     - TaskRun
+  #     clusters:
+  #     - "https://kubernetes.default.svc"

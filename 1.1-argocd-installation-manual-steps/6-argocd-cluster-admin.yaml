@@ -5,7 +5,8 @@ metadata:
     # generateName: cluster-admin-argocd
 subjects:
   - kind: ServiceAccount
-    name: argocd-application-controller
+    # name: argocd-application-controller
+    name: demolab-argocd-argocd-application-controller
     namespace: argocd
 roleRef:
   apiGroup: rbac.authorization.k8s.io

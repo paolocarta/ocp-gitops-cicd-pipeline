@@ -10,3 +10,5 @@ ssh/git-private-key
 5-applications/spring-rest/cicd/tekton-pipeline/manual-manifests/
 
 argocd-crd.yaml
+
+2.1-users-groups/tektonbot-token
