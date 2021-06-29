@@ -21,7 +21,8 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: developerteam1-cicd
+    # namespace: developerteam1-cicd
+    namespace: argocd
     server: 'https://kubernetes.default.svc'
   project: cicd
   source:
@@ -31,7 +32,8 @@ spec:
       - values.yaml
       parameters:
       - name: deploy.namespace.prefix
-        value: developerteam1
+        value: argocd
+        # value: developerteam1
     path: 5-applications/spring-rest/cicd/tekton-pipeline
     repoURL: https://github.com/paolocarta/ocp-gitops-cicd-pipeline.git
     targetRevision: master
