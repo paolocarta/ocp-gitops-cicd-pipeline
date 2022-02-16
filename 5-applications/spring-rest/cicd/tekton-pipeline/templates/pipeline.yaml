@@ -17,21 +17,36 @@ spec:
     type: git
   - name: {{ include "springboot-tekton.fullname" . }}-image
     type: image
-  ####
+
   tasks:
-  - name: maven-and-image-build
+  - name: maven-build
     taskRef: 
       name: maven-and-image-build
     resources:
       inputs:
       - name: source
         resource: {{ include "springboot-tekton.fullname" . }}-source
-      outputs:
-      - name: image
-        resource: {{ include "springboot-tekton.fullname" . }}-image
     workspaces:
     - name: maven-repo
       workspace: local-maven-repo
+    - name: output-area
+      workspace: exchange-area
+
+  - name: container-image-build
+    taskRef: 
+      name: container-image-build
+    resources:
+      inputs:
+      - name: source
+        resource: {{ include "springboot-tekton.fullname" . }}-source
+        # from: [maven-build]
+      outputs:
+      - name: image
+        resource: {{ include "springboot-tekton.fullname" . }}-image
+    params:
+    - name: image-tag
+      value: "$(tasks.maven-build.results.image-tag)"
+    workspaces:
     - name: output-area
       workspace: exchange-area
   ####
