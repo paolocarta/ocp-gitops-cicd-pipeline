@@ -49,32 +49,32 @@ spec:
     workspaces:
     - name: output-area
       workspace: exchange-area
-  ####
-  - name: deploy-to-stage
-    taskRef:
-      name: deploy
-    resources:
-      inputs:
-      - name: gitops-repo
-        resource: gitops-repo
-      - name: image
-        resource: {{ include "springboot-tekton.fullname" . }}-image
-    params:
-    - name: deployment-folder
-      value: "5-applications/spring-rest/manifests/overlays/stage" 
-    workspaces:
-    - name: output-area
-      workspace: exchange-area
-    runAfter:
-      - maven-and-image-build
-  ####
-  - name: sync-application-stage
-    taskRef:
-      name: argocd-task-sync-and-wait
-    params:
-      - name: application-name
-        value: spring-boot-rest-stage
-      - name: flags
-        value: --insecure
-    runAfter:
-      - deploy-to-stage
+
+  # - name: deploy-to-stage
+  #   taskRef:
+  #     name: deploy
+  #   resources:
+  #     inputs:
+  #     - name: gitops-repo
+  #       resource: gitops-repo
+  #     - name: image
+  #       resource: {{ include "springboot-tekton.fullname" . }}-image
+  #   params:
+  #   - name: deployment-folder
+  #     value: "5-applications/spring-rest/manifests/overlays/stage" 
+  #   workspaces:
+  #   - name: output-area
+  #     workspace: exchange-area
+  #   runAfter:
+  #     - maven-and-image-build
+  
+  # - name: sync-application-stage
+  #   taskRef:
+  #     name: argocd-task-sync-and-wait
+  #   params:
+  #     - name: application-name
+  #       value: spring-boot-rest-stage
+  #     - name: flags
+  #       value: --insecure
+  #   runAfter:
+  #     - deploy-to-stage

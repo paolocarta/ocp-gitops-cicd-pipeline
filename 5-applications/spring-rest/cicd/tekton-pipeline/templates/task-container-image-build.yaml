@@ -78,14 +78,14 @@ spec:
     securityContext:
       privileged: true
 
-  - name: push-git-tag
-    image: clamer/kikd:1.0.3
-    imagePullPolicy: IfNotPresent
-    workingDir: /workspace/source
-    command: ["/bin/bash"]
-    args:
-      - -c
-      - "cp -r /tekton/home/.ssh /root/ && git push origin --tags"
+  # - name: push-git-tag
+  #   image: clamer/kikd:1.0.3
+  #   imagePullPolicy: IfNotPresent
+  #   workingDir: /workspace/source
+  #   command: ["/bin/bash"]
+  #   args:
+  #     - -c
+  #     - "cp -r /tekton/home/.ssh /root/ && git push origin --tags"
 
   volumes:
   - name: varlibcontainers
