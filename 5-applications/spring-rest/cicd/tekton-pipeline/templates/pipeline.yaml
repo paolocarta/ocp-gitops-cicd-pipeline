@@ -21,7 +21,7 @@ spec:
   tasks:
   - name: maven-build
     taskRef: 
-      name: maven-and-image-build
+      name: maven-build
     resources:
       inputs:
       - name: source

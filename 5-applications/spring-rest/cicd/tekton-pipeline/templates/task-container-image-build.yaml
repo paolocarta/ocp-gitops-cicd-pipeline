@@ -31,6 +31,13 @@ spec:
       default: oci
       description: 'The format of the built container, oci or docker'
       type: string
+    # - name: imageRef
+    #   description: "Reference (name) of the image to build"
+    #   type: string
+    #   default: eu.gcr.io/kube-bootcamp-pc/basic-spring-boot
+    - name: image-tag
+      type: string
+      default: 1.0.0
 
   resources:
     inputs:

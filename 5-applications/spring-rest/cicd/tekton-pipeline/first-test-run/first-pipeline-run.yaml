@@ -8,6 +8,7 @@ metadata:
 spec:
   pipelineRef:
     name: basic-spring-boot-pipeline
+    
   resources:
   - name: basic-spring-boot-source
     resourceRef:
@@ -18,12 +19,22 @@ spec:
   - name: basic-spring-boot-image
     resourceRef:
       name: basic-spring-boot-image
+
   serviceAccountName: pipeline-with-keys
+
   workspaces:
   - name: local-maven-repo
     persistentVolumeClaim:
       claimName: maven-repo-pvc-spring-rest
   - name: exchange-area
-    persistentVolumeClaim:
-      claimName: exchange-area-pvc-spring-rest
+    # persistentVolumeClaim:
+    #   claimName: exchange-area-pvc-spring-rest
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+
   timeout: 1h0m0s
